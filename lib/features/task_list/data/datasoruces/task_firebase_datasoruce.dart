@@ -10,7 +10,7 @@ abstract class TaskFirebaseDatasoruce {
 }
 
 class TaskFirebaseDataSourceImpl implements TaskFirebaseDatasoruce {
-  static const String collectionTask = 'tasks';
+  static const String collectionTask = 'task';
 
   final FirebaseFirestore _firebase = FirebaseFirestore.instance;
 
@@ -34,7 +34,7 @@ class TaskFirebaseDataSourceImpl implements TaskFirebaseDatasoruce {
 
   @override
   Future<bool> updateTask(String id, bool state) async{
-    await _firebase.collection(collectionTask).doc(id).set({'state':state});
+    await _firebase.collection(collectionTask).doc(id).set({'state':state},SetOptions(merge: true));
     return true;
   }
 

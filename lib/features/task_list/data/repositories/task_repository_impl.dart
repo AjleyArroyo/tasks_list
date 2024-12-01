@@ -11,8 +11,7 @@ class TaskRepositoryImpl extends TaskRepository {
   TaskRepositoryImpl({required this.taskFirebaseDatasoruce});
   @override
   Future<bool> deleteTask({required id}) {
-    // TODO: implement deleteTask
-    throw UnimplementedError();
+    return taskFirebaseDatasoruce.deleteTask(id);
   }
 
   @override
@@ -22,8 +21,7 @@ class TaskRepositoryImpl extends TaskRepository {
 
   @override
   Future<bool> updateTask({required id,required state}) {
-    // TODO: implement updateTask
-    throw UnimplementedError();
+    return taskFirebaseDatasoruce.updateTask(id, state);
   }
   
   @override
@@ -33,8 +31,7 @@ class TaskRepositoryImpl extends TaskRepository {
   
   @override
   Future<List<Task>> getTaskBy(bool state) {
-    // TODO: implement getTaskBy
-    throw UnimplementedError();
+    return taskFirebaseDatasoruce.getTasksBy(state: state);
   }
   
   

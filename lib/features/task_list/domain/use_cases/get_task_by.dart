@@ -1,10 +1,10 @@
 import 'package:tasks/features/task_list/domain/entities/task.dart';
 import 'package:tasks/features/task_list/domain/repositories/task_repository.dart';
 
-class GetTaskBy {
+class GetTaskByUseCase {
   final TaskRepository repository;
 
-  GetTaskBy({required this.repository});
+  GetTaskByUseCase({required this.repository});
 
   Future<List<Task>> call({bool state = false}){
 
