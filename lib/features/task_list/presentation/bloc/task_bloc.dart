@@ -54,7 +54,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
       emit(TaskLoading());
       try {
         await _deleteTaskUseCase(event.id);
-        emit (TaskSuccess());
+        add(OnGetTask());
       }catch (e){
         emit(TaskFailure());
       }

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tasks/config/service_locator.dart';
 import 'package:tasks/features/task_list/presentation/bloc/task_bloc.dart';
+import 'package:tasks/features/task_list/presentation/pages/create_task.dart';
 import 'package:tasks/features/task_list/presentation/pages/task_list_page.dart';
 import 'config/firebase_config/firebase_options.dart';
 
@@ -44,10 +45,24 @@ class MyApp extends StatelessWidget {
           //
           // This works for code too, not just values: Most code changes can be
           // tested with just a hot reload.
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+          textTheme: const TextTheme(
+      bodyLarge: TextStyle(fontSize: 18.0), // Tamaño de texto para párrafos grandes
+      bodyMedium: TextStyle(fontSize: 16.0), // Tamaño de texto para párrafos medios
+      bodySmall: TextStyle(fontSize: 14.0), // Tamaño de texto para párrafos pequeños
+      headlineMedium: TextStyle(fontSize: 24.0), // Tamaño para encabezados medios
+      headlineSmall: TextStyle(fontSize: 20.0), // Tamaño para encabezados pequeños
+      titleLarge: TextStyle(fontSize: 22.0), // Tamaño para títulos
+    ),
           useMaterial3: true,
         ),
-        home: const TaskListPage(),
+        
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const TaskListPage(),
+          '/create': (context) => CreateTask()
+        },
+        
       ),
     );
   }

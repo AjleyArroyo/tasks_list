@@ -19,8 +19,13 @@ class _TaskBarWidgetState extends State<TaskBarWidget> {
       initialIndex: 0,
     
       length: 3, child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TabBar(tabs: [Tab(text: 'Todos',),Tab(text: 'Pendientes',),Tab(text: 'Completados',)]),
+          const TabBar(labelStyle: TextStyle(fontSize: 16), tabs: [Tab(text: 'Todos',),Tab(text: 'Pendientes',),Tab(text: 'Completados',)]),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Text('Desliza a la izquierda para eliminar', textAlign: TextAlign.left,),
+          ),
           Expanded(
             child: TabBarView(children: [
               ListView.builder(
@@ -42,7 +47,9 @@ class _TaskBarWidgetState extends State<TaskBarWidget> {
                 
                 return TaskWidget(task: taskComplete[index]);
               },),],),
-          )
+          ),
+          
+          
          
         ],
       ));

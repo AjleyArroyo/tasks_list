@@ -16,7 +16,8 @@ class TaskFirebaseDataSourceImpl implements TaskFirebaseDatasoruce {
 
   @override
   Future<bool> deleteTask(String id) async{
-    _firebase.collection(collectionTask).doc("id").delete();
+    _firebase.collection(collectionTask).doc(id).delete();
+
     return true;
   }
 
@@ -26,7 +27,10 @@ class TaskFirebaseDataSourceImpl implements TaskFirebaseDatasoruce {
 
     await _firebase.collection(collectionTask).get().then((querySnapshot) {
       for (var docSnapshot in querySnapshot.docs) {
-        tasks.add(TaskModel.fromJson(docSnapshot.data()));
+        final data = docSnapshot.data();
+        data['id'] = docSnapshot.id;
+        
+        tasks.add(TaskModel.fromJson(data));
       }
     });
     return tasks;

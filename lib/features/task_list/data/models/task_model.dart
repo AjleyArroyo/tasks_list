@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tasks/features/task_list/domain/entities/task.dart';
 
 class TaskModel extends Task{
