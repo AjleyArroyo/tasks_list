@@ -1,10 +1,10 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasks/features/task_list/domain/entities/task.dart';
 import 'package:tasks/features/task_list/domain/use_cases/create_task.dart';
 import 'package:tasks/features/task_list/domain/use_cases/delete_task.dart';
 import 'package:tasks/features/task_list/domain/use_cases/get_task.dart';
-import 'package:tasks/features/task_list/domain/use_cases/get_task_by.dart';
 import 'package:tasks/features/task_list/domain/use_cases/update_task.dart';
 
 part 'task_event.dart';
@@ -13,11 +13,11 @@ part 'task_state.dart';
 class TaskBloc extends Bloc<TaskEvent, TaskState> {
 
   final CreateaskUseCase _createaskUseCase;
-  final GetTaskByUseCase _getTaskByUseCase;
+
   final GetTaskUseCase _getTaskUseCase;
   final UpdateTaskUseCase _updateTaskUseCase;
   final DeleteTaskUseCase _deleteTaskUseCase;
-  TaskBloc(this._createaskUseCase, this._getTaskByUseCase, this._getTaskUseCase, this._updateTaskUseCase, this._deleteTaskUseCase) : super(TaskInitial()) {
+  TaskBloc(this._createaskUseCase, this._getTaskUseCase, this._updateTaskUseCase, this._deleteTaskUseCase) : super(TaskInitial()) {
     on<OnGetTask>((event, emit) async{
       emit(TaskLoading());
       try {
@@ -61,15 +61,6 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
       
     });
 
-    on<onGetTaskBy>((event, emit) async{
-      emit(TaskLoading());
-      try {
-        final resp = await _getTaskByUseCase(state: event.state);
-        emit (TaskListLoaded(taskList: resp));
-      }catch (e){
-        emit(TaskFailure());
-      }
-      
-    });
+   
   }
 }

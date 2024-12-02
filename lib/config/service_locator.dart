@@ -13,10 +13,10 @@ import 'package:tasks/features/task_list/presentation/bloc/task_bloc.dart';
 
 GetIt getIt = GetIt.instance;
 
-void ServiceLocatorInit(){
+void serviceLocatorInit(){
 
   //Blocs
-  getIt.registerFactory(() => TaskBloc(getIt(),getIt(),getIt(),getIt(),getIt()));
+  getIt.registerFactory(() => TaskBloc(getIt(),getIt(),getIt(),getIt()));
 
   //Casos de uso
   getIt.registerLazySingleton(() => CreateaskUseCase(repository: getIt()),);

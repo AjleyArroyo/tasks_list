@@ -24,9 +24,3 @@ class OnDeleteTask extends TaskEvent {
 
   OnDeleteTask({required this.id});
 }
-
-class onGetTaskBy extends TaskEvent {
-  final bool state;
-
-  onGetTaskBy({required this.state});
-}

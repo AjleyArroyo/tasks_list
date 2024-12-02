@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:tasks/config/service_locator.dart';
 import 'package:tasks/features/task_list/presentation/bloc/task_bloc.dart';
 import 'package:tasks/features/task_list/presentation/pages/create_task.dart';
@@ -13,7 +12,7 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform
   );
-  ServiceLocatorInit();
+  serviceLocatorInit();
   runApp(const MyApp());
 }
 
