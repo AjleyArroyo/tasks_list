@@ -28,7 +28,7 @@ class CreateTaskPage extends StatelessWidget {
               ),
               TextFormField(
                 controller: _nameController,
-                maxLength: 16,
+                maxLength: 30,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "El campo no puede estar vacio";

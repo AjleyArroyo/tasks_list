@@ -18,6 +18,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
   final UpdateTaskUseCase _updateTaskUseCase;
   final DeleteTaskUseCase _deleteTaskUseCase;
   TaskBloc(this._createaskUseCase, this._getTaskUseCase, this._updateTaskUseCase, this._deleteTaskUseCase) : super(TaskInitial()) {
+    //Evento para obtener la lista de tareas
     on<OnGetTask>((event, emit) async{
       emit(TaskLoading());
       try {
@@ -28,7 +29,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
       }
       
     });
-
+    //Evento para crear 
     on<OnCreateTask>((event, emit) async{
       emit(TaskLoading());
       try {

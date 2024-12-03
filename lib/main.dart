@@ -6,12 +6,14 @@ import 'package:tasks/features/task_list/presentation/bloc/task_bloc.dart';
 import 'package:tasks/features/task_list/presentation/pages/create_task_page.dart';
 import 'package:tasks/features/task_list/presentation/pages/task_list_page.dart';
 import 'config/firebase_config/firebase_options.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() async{
+
+void main() async {
+  
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform
-  );
+  await dotenv.load(fileName: ".env");
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   serviceLocatorInit();
   runApp(const MyApp());
 }
@@ -23,9 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => getIt<TaskBloc>())
-      ],
+      providers: [BlocProvider(create: (_) => getIt<TaskBloc>())],
       child: MaterialApp(
         title: 'Task List',
         theme: ThemeData(
@@ -46,25 +46,26 @@ class MyApp extends StatelessWidget {
           // tested with just a hot reload.
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
           textTheme: const TextTheme(
-      bodyLarge: TextStyle(fontSize: 18.0), // Tamaño de texto para párrafos grandes
-      bodyMedium: TextStyle(fontSize: 16.0), // Tamaño de texto para párrafos medios
-      bodySmall: TextStyle(fontSize: 14.0), // Tamaño de texto para párrafos pequeños
-      headlineMedium: TextStyle(fontSize: 24.0), // Tamaño para encabezados medios
-      headlineSmall: TextStyle(fontSize: 20.0), // Tamaño para encabezados pequeños
-      titleLarge: TextStyle(fontSize: 22.0), // Tamaño para títulos
-    ),
+            bodyLarge: TextStyle(
+                fontSize: 18.0), // Tamaño de texto para párrafos grandes
+            bodyMedium: TextStyle(
+                fontSize: 16.0), // Tamaño de texto para párrafos medios
+            bodySmall: TextStyle(
+                fontSize: 14.0), // Tamaño de texto para párrafos pequeños
+            headlineMedium:
+                TextStyle(fontSize: 24.0), // Tamaño para encabezados medios
+            headlineSmall:
+                TextStyle(fontSize: 20.0), // Tamaño para encabezados pequeños
+            titleLarge: TextStyle(fontSize: 22.0), // Tamaño para títulos
+          ),
           useMaterial3: true,
         ),
-        
         initialRoute: '/',
         routes: {
           '/': (context) => const TaskListPage(),
           '/create': (context) => CreateTaskPage()
         },
-        
       ),
     );
   }
 }
-
-

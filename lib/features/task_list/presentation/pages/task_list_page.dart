@@ -16,7 +16,6 @@ class TaskListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Lista de tareas'),
-      
         centerTitle: true,
       ),
       body: BlocBuilder<TaskBloc, TaskState>(
@@ -43,13 +42,8 @@ class TaskListPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => Navigator.pushNamed(context, '/create'),
-        label: const Text('Crear'),
-          icon: 
-          const Icon(Icons.add),
-          
-          
-          
-        
+        label: const Text('Crear Tarea'),
+        icon: const Icon(Icons.add),
       ),
     );
   }
