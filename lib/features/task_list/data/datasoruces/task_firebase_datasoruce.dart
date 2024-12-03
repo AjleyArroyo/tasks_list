@@ -10,6 +10,7 @@ abstract class TaskFirebaseDatasoruce {
 }
 
 class TaskFirebaseDataSourceImpl implements TaskFirebaseDatasoruce {
+  //Nombre de la coleccion de la bd en firebase
   static const String collectionTask = 'task';
 
   final FirebaseFirestore _firebase = FirebaseFirestore.instance;

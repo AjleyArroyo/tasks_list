@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasks/config/service_locator.dart';
 import 'package:tasks/features/task_list/presentation/bloc/task_bloc.dart';
-import 'package:tasks/features/task_list/presentation/pages/create_task.dart';
+import 'package:tasks/features/task_list/presentation/pages/create_task_page.dart';
 import 'package:tasks/features/task_list/presentation/pages/task_list_page.dart';
 import 'config/firebase_config/firebase_options.dart';
 
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => const TaskListPage(),
-          '/create': (context) => CreateTask()
+          '/create': (context) => CreateTaskPage()
         },
         
       ),

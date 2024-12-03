@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasks/features/task_list/domain/entities/task.dart';
 import 'package:tasks/features/task_list/presentation/bloc/task_bloc.dart';
 
-class CreateTask extends StatelessWidget {
-  CreateTask({super.key});
+class CreateTaskPage extends StatelessWidget {
+  CreateTaskPage({super.key});
 
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
@@ -30,7 +30,7 @@ class CreateTask extends StatelessWidget {
                 controller: _nameController,
                 maxLength: 16,
                 validator: (value) {
-                  if (value!.isEmpty){
+                  if (value!.isEmpty) {
                     return "El campo no puede estar vacio";
                   }
                   return null;
@@ -44,7 +44,7 @@ class CreateTask extends StatelessWidget {
                 controller: _descriptionController,
                 maxLength: 50,
                 validator: (value) {
-                  if (value!.isEmpty){
+                  if (value!.isEmpty) {
                     return "El campo no puede estar vacio";
                   }
                   return null;
@@ -62,17 +62,15 @@ class CreateTask extends StatelessWidget {
                         borderRadius:
                             BorderRadius.circular(8), // Bordes redondeados
                       ),
-                      
                     ),
                     onPressed: () {
-                      
                       if (_formKey.currentState!.validate()) {
                         BlocProvider.of<TaskBloc>(context).add(OnCreateTask(
                             task: Task(
                                 name: _nameController.text,
                                 description: _descriptionController.text,
                                 state: false)));
-                                Navigator.pop(context);
+                        Navigator.pop(context);
                       }
                     },
                     child: const Text(
