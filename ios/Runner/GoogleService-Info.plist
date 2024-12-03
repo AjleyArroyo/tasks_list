@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.tasks</string>
+	<string>com.tasklist.app</string>
 	<key>PROJECT_ID</key>
 	<string>tasklist-6dae3</string>
 	<key>STORAGE_BUCKET</key>
